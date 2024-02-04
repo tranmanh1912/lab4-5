@@ -1,0 +1,12 @@
+{
+    "loaiTin" : [
+        {"idLT" : "1" ,"Ten" : "Thể Thao" , "thuTu" : "1" , "idTL" : "1"},
+        {"idLT" : "2" ,"Ten" : "Du Lịch" , "thuTu" : "2" , "idTL" : "1"},
+        {"idLT" : "3" ,"Ten" : "Văn hóa" , "thuTu" : "3" , "idTL" : "2"},
+        {"idLT" : "4" ,"Ten" : "Du lịch" , "thuTu" : "4" , "idTL" : "2"}
+    ],
+    "theLoai" : [
+        {"idTL" : "1" ,"Ten" : "Tin xã hội" , "thuTu" : "1" , "lang" : "vie"},
+        {"idTL" : "2" ,"Ten" : "Tin văn hóa" , "thuTu" : "2" , "lang" : "vie"}
+    ]
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #show{
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        p{
+            color: brown;
+        }
+        em{
+            color: rgb(61, 102, 0);
+        }
+    </style>
+    <h1>Trạng thái</h1>
+    <div id="show">
+        
+    </div>
+    <script>
+        function ThucDay(){
+            return new Promise((r1,r2) => {
+                document.querySelector("#show").innerHTML+="<p>B1 đã ngủ dậy</p>";
+                r1();
+            })
+        }
+        function DanhRang(){
+            return new Promise((rOK , rFail)=>{
+                document.querySelector("#show").innerHTML+="<p>B2 Đang đánh răng ...</p>";
+                setTimeout(() => {
+                    document.querySelector("#show").innerHTML+="<em>Đã đánh răng xong</em>";
+                    rOK();
+                }, 3000);
+            })
+        }
+        function ThayQuanAo(){
+            return new Promise((r1 , r2)=>{
+                document.querySelector("#show").innerHTML+="<p>B3 Đang thay quần áo ...</p>";
+                setTimeout(() => {
+                    document.querySelector("#show").innerHTML+="<em>Đã thay quần áo xong</em>";
+                    r1();
+                }, 4000);
+            })
+        }
+        function DiHoc(viectieptheo){
+                document.querySelector("#show").innerHTML+="<p>B3 Đang di chuyển ...</p>";
+                setTimeout(() => {
+                    document.querySelector("#show").innerHTML+="<em>Đã tới Fpoly</em>";
+                    rOK();
+                }, 5000);
+        
+        }
+        ThucDay()
+        .then(()=>DanhRang())
+        .then(()=>ThayQuanAo())
+        .then(()=>DiHoc())
+        .catch(function(err){alert("Lỗi "+err )})
+    </script>
+</body>
+</html>

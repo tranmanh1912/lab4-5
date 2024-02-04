@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function choSo(mili){
+            return new Promise(function(r1){
+                setTimeout(() => {
+                    random = Math.round(Math.random()*10);
+                    console.log(random);
+                    r1(random);
+                }, mili);
+            })
+        }
+        async function xuatSo(){
+            var kq1 = await choSo(5000);
+            var kq2 = await choSo(3000);
+            var kq3 = await choSo(5000);
+            var kq4 = await choSo(5000);
+            var kq5 = await choSo(5000);
+        }
+        xuatSo();
+    </script>
+</body>
+</html>

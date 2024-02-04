@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="theloai">
+        <h1>Thể loại</h1>
+
+    </div>
+    <div id="loaitin">
+        <h1>Loại Tin</h1>
+    </div>
+    <script>
+        function getdata(url){
+            return new Promise(function(r1 ,r2){
+                fetch(url)
+                .then(response => response.json())
+                .then(listLoaiTin =>r1(listLoaiTin));
+            })
+        };
+
+        url1 = "http://localhost:3000/loaiTin";
+        url2 = "http://localhost:3000/theLoai";
+        Promise.all([getdata(url1),getdata(url2)])
+        .then(function(data){
+            var listLoaiTin = data[0];
+            var listTheLoai = data[1];
+            console.log(data);
+
+            theloai= document.querySelector("#theloai");
+        listLoaiTin.forEach(e => {
+            str = "<p>"+e.idTL+"-"+e.Ten+"-"+e.thuTu+"-"+e.idLT+"</p>";
+            theloai.innerHTML+=str;
+      
+            
+        });
+        loaitin = document.querySelector('#loaitin');
+            listLoaiTin.forEach(e => {
+                loaitin.innerHTML += "<p>" + e.idLT + "-" + e.Ten + "-" + e.thuTu + "-" + e.idTL + "</p>";
+
+            });
+        });
+        
+      
+    </script>
+</body>
+</html>

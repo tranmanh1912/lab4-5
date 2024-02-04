@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div id="kq"></div>
+
+</body>
+<script>
+    xuly = new Promise((r1, r2) => {
+        let listsv = [
+            {ht : "Hoang Hai Dang" , diem : 10},
+            {ht : "Nguyen Hai Anh" , diem : 8},
+            {ht : "Le Hai Dang" , diem : 4},
+            {ht : "Ho Anh Dang" , diem : 6},
+            {ht : "Pham Hai Dang" , diem : 4.5},
+            
+        ];
+        r1(listsv);
+    });
+    xuly
+        .then(locdiem)
+        .then(locTuKhoa)
+        .then(hienSV)
+    document.querySelector('#kq').innerHTML = "<h2> Danh sách sinh viên";
+    function locdiem(data) {
+        return new Promise((r1) => {
+            arr = data.filter(sv => { return sv.diem >= 5 });
+            r1(arr);
+        });
+    }
+    function locTuKhoa(data) {
+        return new Promise((r1) => {
+            pat = /anh/i;
+            arr = data.filter(sv => { return pat.test(sv.ht) });
+            r1(arr);
+        });
+    }
+
+    function hienSV(data) {
+        data.forEach(sv => {
+            let str = `<p>
+                <span>${sv.ht.toUpperCase()}</span>
+                <b>${sv.diem}</b>
+                <i>${sv.diem > 9 ? "gioi" : "&nbsp;"}</i>
+                </p>`;
+            document.querySelector('#kq').innerHTML += str;
+        });
+    }
+
+
+
+</script>
+
+</html>

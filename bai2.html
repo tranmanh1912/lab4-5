@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+        .container{
+            width: 650px;
+            margin: 0 auto;
+            margin-top: 100px;
+            font-size: 24px;
+            text-align: center;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            padding: 20px 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div id="name" style="font-weight: bold;">Họ và tên: </div>
+        <div id="subject" style="font-weight: bold;">Môn học: </div>
+        <div id="lab1">Lab 1: </div>
+        <div id="lab2">Lab 2: </div>
+        <div id="lab3">Lab 3: </div>
+        <div id="final">Final: </div>
+        <div id="avg">DTB: </div>
+        <div id="rank">Học lực: </div>
+    </div>
+    <script>
+        let name, subject, lab1, lab2, lab3, final, avg, rank;
+        const HoTen = () => {
+            const input = prompt("Nhập họ tên: ");
+            console.log(input);
+            document.getElementById("name").innerHTML += input;
+
+            return input;
+        }
+
+        const Subject = () => {
+            const input = prompt("Nhập môn học: ");
+            console.log(input);
+            document.getElementById("subject").innerHTML += input;
+            return input;
+        }
+
+        const Lab1 = () => {
+            const input = prompt("Nhập điểm Lab 1: ");
+            console.log(input);
+            document.getElementById("lab1").innerHTML += input;
+            return input;
+        }
+
+        const Lab2 = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const input = prompt("Nhập điểm Lab 2: ");
+                    console.log(input);
+                    document.getElementById("lab2").innerHTML += input;
+                    resolve(input);
+                }, 3000);
+            });
+        }
+
+        const Lab3 = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const input = prompt("Nhập điểm Lab 3: ");
+                    console.log(input);
+                    document.getElementById("lab3").innerHTML += input;
+                    resolve(input);
+                }, 7000);
+            });
+        }
+
+        const Final = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const input = prompt("Nhập điểm Final: ");
+                    console.log(input);
+                    document.getElementById("final").innerHTML += input;
+                    resolve(input);
+                }, 5000);
+            });
+        }
+
+        const Calculate = (lab1, lab2, lab3, final) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const avg = parseFloat(lab1) * 0.1 + parseFloat(lab2) * 0.2 + parseFloat(lab3) * 0.3 + parseFloat(final) * 0.4;
+                    document.getElementById("avg").innerHTML += avg;
+                    resolve(avg);
+                }, 3000);
+            });
+        }
+
+        const Rank = (avg) => {
+            if (avg >= 8.5) {
+                return "Giỏi";
+            } else if (avg >= 7) {
+                return "Khá";
+            } else if (avg >= 5) {
+                return "Trung Bình Khá";
+            } else {
+                return "Yếu";
+            }
+        }
+
+        name = HoTen()
+        subject = Subject()
+        lab1 = Lab1()
+        Lab2()
+            .then((value) => { lab2 = value; return Lab3() })
+            .then((value) => { lab3 = value; return Final() })
+            .then((value) => { final = value; return Calculate(lab1, lab2, lab3, final) })
+            .then((value) => {
+                avg = value;
+                document.getElementById("rank").innerHTML += Rank(avg)
+            });
+    </script>
+    <script
+        type="text/javascript">(function () { window['__CF$cv$params'] = { r: '6db39f1a5b59c6e0', m: 'uerpR8Sqs94T30F0BXo_2qm_OXEd1COKjpcoOTffa.E-1644478115-0-AXXOrCVhHCzEzjhmC5ENDakdFAzuNRTutr6N2OuYeFvO6MLaEvlYOe+UuCTSkaZyms974Iy93TGf2wsKdxxE31XGgWSpou0qLRhnNpMV5md1lXI29bufvO3IaS+5P4zHbNX1gO9ADpXfplcRPU4PBinaTz/ynIPCKtuxNpttndHRFmdJr56rENVSdxj6KCTWfQ==', s: [0x86b7da5f2a, 0xe23279527d], } })();</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function doi1chut(mili , msg){
+            return new Promise (function(r1){
+                setTimeout(() => {
+                    alert(msg);
+                    r1();
+                }, mili);
+            })
+        }
+        async function cauhoi(){
+            var kq1 = await doi1chut(1000,"Em");
+            var kq2 = await doi1chut(3000,"Có");
+            var kq3 = await doi1chut(5000,"Yêu");
+            var kq4 = await doi1chut(5000,"Anh");
+            var kq5 = await doi1chut(5000,"Không");
+        }
+        cauhoi();
+    </script>
+</body>
+</html>
